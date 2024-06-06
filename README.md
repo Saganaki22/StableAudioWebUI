@@ -48,13 +48,13 @@ Seed: Any <br>
     cd StableAudioWebUI
     python -m venv myenv python=3.10
     myenv\Scripts\activate
-    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+    pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
     pip install -r requirements.txt
 
     
 ## (Note if you have an older Nvidia GPU you may need to use CUDA 11.8)
 
-    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+    pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
  If you haven't got a hugging face account or have not used huggingface-cli before, create an account and then authenticate your Hugging face account with a token (create token at https://huggingface.co/settings/tokens)
 
