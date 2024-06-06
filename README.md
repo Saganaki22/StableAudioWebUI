@@ -27,13 +27,12 @@ Seed: Any <br>
 
 ---
 
-  Start by cloning the repo:
+ ## Start by cloning the repo:
  
     git clone https://github.com/Saganaki22/StableAudioWebUI.git
 
     
-<br>
-  Use the below deployment (tested on 24GB Nvidia VRAM):
+## Use the below deployment (tested on 24GB Nvidia VRAM):
 
     cd StableAudioWebUI
     python -m venv myenv python=3.10
@@ -41,16 +40,12 @@ Seed: Any <br>
     pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
     pip install -r requirements.txt
 
-python -m venv myenv
-
     
-<br>
-  (Note if you have an older Nvidia GPU you may need to use CUDA 11.8)
+## (Note if you have an older Nvidia GPU you may need to use CUDA 11.8)
 
     pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
-<br>
-  If you haven't got a hugging face account or have not used huggingface-cli before, create an account and then authenticate your Hugging face account with a token (create token at https://huggingface.co/settings/tokens)
+ If you haven't got a hugging face account or have not used huggingface-cli before, create an account and then authenticate your Hugging face account with a token (create token at https://huggingface.co/settings/tokens)
 
     huggingface-cli login
 
@@ -62,12 +57,25 @@ python -m venv myenv
     pip install -r requirements.txt
     pip install -r requirements1.txt
 
-##
-Run
+## Run
+
 
     python gradio_app.py
     
 <br>
+
+## Bonus
+If you are using Windows and followed my setup instructions you could create a batch script to activate the enviroment and run the script all in one, what you need to do is: <br>
+<br>
+Create a new text file in the same folder as gradio_app.py & paste this in the text file
+
+    @echo off
+    title StableAudioWebUI
+    call myenv\Scripts\activate
+    python gradio_app.py
+    pause
+
+then save the file as run.bat
 
 # Screenshots
 
