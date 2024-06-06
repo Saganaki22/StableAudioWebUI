@@ -10,7 +10,7 @@ from datetime import datetime
 import gradio as gr
 
 # Define the function to generate audio based on a prompt
-def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, sampler_type):
+def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, sampler_type, model_half):
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     # Download model
@@ -19,6 +19,16 @@ def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_ti
     sample_size = model_config["sample_size"]
 
     model = model.to(device)
+    
+    # Print model data type before conversion
+    print("Model data type before conversion:", next(model.parameters()).dtype)
+
+    # Convert model to float16 if model_half is True
+    if model_half:
+        model = model.to(torch.float16)
+    
+    # Print model data type after conversion
+    print("Model data type after conversion:", next(model.parameters()).dtype)
 
     # Set up text and timing conditioning
     conditioning = [{
@@ -41,11 +51,19 @@ def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_ti
         seed=seed
     )
 
+    # Print output data type
+    print("Output data type:", output.dtype)
+
     # Rearrange audio batch to a single sequence
     output = rearrange(output, "b d n -> d (b n)")
 
-    # Peak normalize, clip, convert to int16, and save to temporary file
-    output = output.to(torch.float32).div(torch.max(torch.abs(output))).clamp(-1, 1).mul(32767).to(torch.int16).cpu()
+    # Peak normalize, clip, and convert to int16 directly if model_half is used
+    output = output.div(torch.max(torch.abs(output))).clamp(-1, 1).mul(32767)
+    if model_half:
+        output = output.to(torch.int16).cpu()
+    else:
+        output = output.to(torch.float32).to(torch.int16).cpu()
+
     torchaudio.save("temp_output.wav", output, sample_rate)
 
     # Convert to MP3 format using pydub
@@ -74,7 +92,7 @@ def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_ti
 
     return full_path
 
-def audio_generator(prompt, sampler_type, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed):
+def audio_generator(prompt, sampler_type, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, model_half):
     try:
         print("Generating audio with parameters:")
         print("Prompt:", prompt)
@@ -85,8 +103,9 @@ def audio_generator(prompt, sampler_type, steps, cfg_scale, sigma_min, sigma_max
         print("Sigma Max:", sigma_max)
         print("Generation Time:", generation_time)
         print("Seed:", seed)
+        print("Model Half Precision:", model_half)
         
-        filename = generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, sampler_type)
+        filename = generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, sampler_type, model_half)
         return gr.Audio(filename), f"Generated: {filename}"
     except Exception as e:
         return str(e)
@@ -106,16 +125,13 @@ sampler_dropdown = gr.Dropdown(
     ],
     value="dpmpp-3m-sde"
 )
-steps_slider = gr.Slider(minimum=0, maximum=200, label="Steps", step=1)
-steps_slider.value = 100  # Set the default value here
-cfg_scale_slider = gr.Slider(minimum=0, maximum=15, label="CFG Scale", step=0.1)
-cfg_scale_slider.value = 7  # Set the default value here
+steps_slider = gr.Slider(minimum=0, maximum=200, label="Steps", step=1, value=100)
+cfg_scale_slider = gr.Slider(minimum=0, maximum=15, label="CFG Scale", step=0.1, value=7)
 sigma_min_slider = gr.Slider(minimum=0, maximum=50, label="Sigma Min", step=0.1, value=0.3)
-sigma_max_slider = gr.Slider(minimum=0, maximum=1000, label="Sigma Max", step=1, value=500)
-generation_time_slider = gr.Slider(minimum=0, maximum=47, label="Generation Time (seconds)", step=1)
-generation_time_slider.value = 47  # Set the default value here
-seed_slider = gr.Slider(minimum=-1, maximum=999999, label="Seed", step=1)
-seed_slider.value = 77212  # Set the default value here
+sigma_max_slider = gr.Slider(minimum=0, maximum=1000, label="Sigma Max", step=0.1, value=500)
+generation_time_slider = gr.Slider(minimum=0, maximum=47, label="Generation Time (seconds)", step=1, value=47)
+seed_slider = gr.Slider(minimum=-1, maximum=999999, label="Seed", step=1, value=123456)
+model_half_checkbox = gr.Checkbox(label="Low VRAM (float16)", value=False)
 
 output_textbox = gr.Textbox(label="Output")
 
@@ -124,7 +140,7 @@ description = "[Github Repository](https://github.com/Saganaki22/StableAudioWebU
 
 gr.Interface(
     audio_generator,
-    [prompt_textbox, sampler_dropdown, steps_slider, cfg_scale_slider, sigma_min_slider, sigma_max_slider, generation_time_slider, seed_slider],
+    [prompt_textbox, sampler_dropdown, steps_slider, cfg_scale_slider, sigma_min_slider, sigma_max_slider, generation_time_slider, seed_slider, model_half_checkbox],
     [gr.Audio(), output_textbox],
     title=title,
     description=description
