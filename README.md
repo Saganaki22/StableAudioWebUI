@@ -36,11 +36,12 @@ Seed: Any <br>
   Use the below deployment (tested on 24GB Nvidia VRAM):
 
     cd StableAudioWebUI
-    conda create -n saowebui python=3.10
-    conda activate saowebui
+    python -m venv myenv python=3.10
+    myenv\Scripts\activate
     pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
     pip install -r requirements.txt
 
+python -m venv myenv
 
     
 <br>
