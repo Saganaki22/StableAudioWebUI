@@ -88,7 +88,7 @@ Create a new text file in the same folder as gradio_app.py & paste this in the t
 
 then save the file as run.bat
 
-# Screenshots (Older release)
+# Screenshots (previous release)
 
 (All with random seeds) <br>
 
