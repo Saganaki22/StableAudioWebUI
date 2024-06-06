@@ -1,4 +1,4 @@
-# StableAudioWebUI
+# 💀🔊 StableAudioWebUI 💀🔊
 
 ### A Lightweight Gradio Web interface for running Stable Audio Open 1.0 
 <br>
@@ -13,9 +13,18 @@
 
 ## I am not responsible for any content generated using this repository. By using this repository, you acknowledge that you are bound by the Stability AI license agreement and will only use this model for research or personal purposes. No commercial usage is allowed! <br>
 
+# 🚀Updates
+Added choice for *dpmpp-3m-sde, dpmpp-2m-sde, k-heun, k-lms, k-dpmpp-2s-ancestral, k-dpm-2, k-dpm-fast* samplers <br>
+<br>
+Added link to the Repo <br>
+
+[06/06/2024]
+
+---
 
 ### Recommended Settings
 Prompt: Any <br>
+Sampler: dpmpp-3m-sde <br>
 CFG: 7 <br>
 Sigma_Min: 0.3 <br>
 Sigma_Max: 500 <br>
