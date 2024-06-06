@@ -9,6 +9,17 @@
 <br>
 <br>
 
+Saves Files in the following directory Output/YYYY-MM-DD/ <br>
+with the following schema 'prompt.mp3' <br>
+
+### Recommended Settings
+Prompt: Any <br>
+CFG: 7 <br>
+Sigma_Min: 0.3 <br>
+Sigma_Max: 500 <br>
+Duration: Max 47s <br>
+Seed: Any <br>
+
 ---
 
   Start by cloning the repo:
@@ -81,9 +92,15 @@ Sigma_Max: 500 <br>
 
 ![image](https://github.com/Saganaki22/StableAudioWebUI/blob/main/assets/screenshot3.png)
 
+---
+
 ## Model Details
 
 - **Model type**: `Stable Audio Open 1.0` is a latent diffusion model based on a transformer architecture.
 - **Language(s)**: English
 - **License**: See the [LICENSE file](https://huggingface.co/stabilityai/stable-audio-open-1.0/blob/main/LICENSE).
 - **Commercial License**: to use this model commercially, please refer to [https://stability.ai/membership](https://stability.ai/membership)
+
+---
+
+### [Huggingface](https://huggingface.co/stabilityai/stable-audio-open-1.0)   |   [Stable Audio Tools](https://github.com/Stability-AI/stable-audio-tools)   |   [Stability AI](https://stability.ai/news/introducing-stable-audio-open)
