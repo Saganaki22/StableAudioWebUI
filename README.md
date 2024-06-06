@@ -14,13 +14,13 @@
 ## I am not responsible for any content generated using this repository. By using this repository, you acknowledge that you are bound by the Stability AI license agreement and will only use this model for research or personal purposes. No commercial usage is allowed! <br>
 
 # 🚀Updates
-Added Use Half precision, (Float 16) checkbox for Low VRAM inference <br>
+✅ Added Use Half precision, (Float 16) checkbox for Low VRAM inference <br>
 
-Added choice for all Sampler types <br>
+✅ Added choice for all Sampler types <br>
 
 *( dpmpp-3m-sde, dpmpp-2m-sde, k-heun, k-lms, k-dpmpp-2s-ancestral, k-dpm-2, k-dpm-fast )* <br>
 
-Added link to the Repo <br>
+✅ Added link to the Repo <br>
 
 [06/06/2024]
 
