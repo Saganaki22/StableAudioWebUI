@@ -74,17 +74,17 @@ def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_ti
 
     return full_path
 
-def audio_generator(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, sampler_type):
+def audio_generator(prompt, sampler_type, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed):
     try:
         print("Generating audio with parameters:")
         print("Prompt:", prompt)
+        print("Sampler Type:", sampler_type)
         print("Steps:", steps)
         print("CFG Scale:", cfg_scale)
         print("Sigma Min:", sigma_min)
         print("Sigma Max:", sigma_max)
         print("Generation Time:", generation_time)
         print("Seed:", seed)
-        print("Sampler Type:", sampler_type)
         
         filename = generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, sampler_type)
         return gr.Audio(filename), f"Generated: {filename}"
