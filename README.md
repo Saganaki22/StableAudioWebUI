@@ -9,8 +9,10 @@
 <br>
 <br>
 
-Saves Files in the following directory Output/YYYY-MM-DD/ <br>
-with the following schema 'prompt.mp3' <br>
+# ⚠ Disclaimer
+
+## I am not responsible for any content generated using this repository. By using this repository, you acknowledge that you are bound by the Stability AI license agreement and will only use this model for research or personal purposes. No commercial usage is allowed! <br>
+
 
 ### Recommended Settings
 Prompt: Any <br>
@@ -19,6 +21,9 @@ Sigma_Min: 0.3 <br>
 Sigma_Max: 500 <br>
 Duration: Max 47s <br>
 Seed: Any <br>
+
+### Saves Files in the following directory Output/YYYY-MM-DD/ <br>
+### using the following schema 'prompt.mp3' <br>
 
 ---
 
@@ -50,7 +55,7 @@ Seed: Any <br>
 
   (paste your token and follow the instructions, token will not be displayed when pasted)
 
-  ## ⚠ If you want to run it using CPU <br> 
+  ## If you want to run it using CPU <br> 
   skip 'pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121' and just run
 
     pip install -r requirements.txt
@@ -101,6 +106,9 @@ Sigma_Max: 500 <br>
 - **License**: See the [LICENSE file](https://huggingface.co/stabilityai/stable-audio-open-1.0/blob/main/LICENSE).
 - **Commercial License**: to use this model commercially, please refer to [https://stability.ai/membership](https://stability.ai/membership)
 
----
+#
 
 ### [Huggingface](https://huggingface.co/stabilityai/stable-audio-open-1.0)   |   [Stable Audio Tools](https://github.com/Stability-AI/stable-audio-tools)   |   [Stability AI](https://stability.ai/news/introducing-stable-audio-open)
+
+---
+
