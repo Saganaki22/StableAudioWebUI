@@ -4,7 +4,7 @@
 <br>
 <br>
 
-![image](assets/screenshot00.png)
+![image](assets/screenshot0.png)
 
 <br>
 <br>
