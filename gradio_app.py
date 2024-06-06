@@ -10,7 +10,7 @@ from datetime import datetime
 import gradio as gr
 
 # Define the function to generate audio based on a prompt
-def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed):
+def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, sampler_type):
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     # Download model
@@ -36,7 +36,7 @@ def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_ti
         sample_size=sample_size,
         sigma_min=sigma_min,
         sigma_max=sigma_max,
-        sampler_type="dpmpp-3m-sde",
+        sampler_type=sampler_type,
         device=device,
         seed=seed
     )
@@ -74,7 +74,7 @@ def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_ti
 
     return full_path
 
-def audio_generator(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed):
+def audio_generator(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, sampler_type):
     try:
         print("Generating audio with parameters:")
         print("Prompt:", prompt)
@@ -84,22 +84,34 @@ def audio_generator(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_t
         print("Sigma Max:", sigma_max)
         print("Generation Time:", generation_time)
         print("Seed:", seed)
+        print("Sampler Type:", sampler_type)
         
-        filename = generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed)
+        filename = generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, sampler_type)
         return gr.Audio(filename), f"Generated: {filename}"
     except Exception as e:
         return str(e)
 
 # Create Gradio interface
 prompt_textbox = gr.Textbox(lines=5, label="Prompt")
+sampler_dropdown = gr.Dropdown(
+    label="Sampler Type",
+    choices=[
+        "dpmpp-3m-sde",
+        "dpmpp-2m-sde",
+        "k-heun",
+        "k-lms",
+        "k-dpmpp-2s-ancestral",
+        "k-dpm-2",
+        "k-dpm-fast"
+    ],
+    value="dpmpp-3m-sde"
+)
 steps_slider = gr.Slider(minimum=0, maximum=200, label="Steps", step=1)
 steps_slider.value = 100  # Set the default value here
-cfg_scale_slider = gr.Slider(minimum=0, maximum=15, label="CFG Scale", step=1)
+cfg_scale_slider = gr.Slider(minimum=0, maximum=15, label="CFG Scale", step=0.1)
 cfg_scale_slider.value = 7  # Set the default value here
-sigma_min_number = gr.Number(label="Sigma Min")
-sigma_min_number.default = 0.3  # Set the default value here
-sigma_max_number = gr.Number(label="Sigma Max")
-sigma_max_number.default = 500  # Set the default value here
+sigma_min_slider = gr.Slider(minimum=0, maximum=50, label="Sigma Min", step=0.1, value=0.3)
+sigma_max_slider = gr.Slider(minimum=0, maximum=1000, label="Sigma Max", step=1, value=500)
 generation_time_slider = gr.Slider(minimum=0, maximum=47, label="Generation Time (seconds)", step=1)
 generation_time_slider.value = 47  # Set the default value here
 seed_slider = gr.Slider(minimum=-1, maximum=999999, label="Seed", step=1)
@@ -107,11 +119,13 @@ seed_slider.value = 77212  # Set the default value here
 
 output_textbox = gr.Textbox(label="Output")
 
-title = "Saganaki22 / StableAudioWebUI"
-description = "Generate audio based on a prompt. <br> (Sigma_min: 0.3, Sigma_max: 500)"
+title = "💀🔊 StableAudioWebUI 💀🔊"
+description = "[Github Repository](https://github.com/Saganaki22/StableAudioWebUI)"
 
-gr.Interface(audio_generator, 
-             [prompt_textbox, steps_slider, cfg_scale_slider, sigma_min_number, sigma_max_number, generation_time_slider, seed_slider], 
-             [gr.Audio(), output_textbox], 
-             title=title, 
-             description=description).launch()
+gr.Interface(
+    audio_generator,
+    [prompt_textbox, sampler_dropdown, steps_slider, cfg_scale_slider, sigma_min_slider, sigma_max_slider, generation_time_slider, seed_slider],
+    [gr.Audio(), output_textbox],
+    title=title,
+    description=description
+).launch()
