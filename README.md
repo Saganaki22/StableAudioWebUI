@@ -4,17 +4,29 @@
 <br>
 <br>
 
-![image](assets/screenshot0.png)
+![image](assets/screenshot000.png)
 
 <br>
 <br>
+
+![image](assets/screenshot00.png)
 
 # ⚠ Disclaimer
 
 ## I am not responsible for any content generated using this repository. By using this repository, you acknowledge that you are bound by the Stability AI license agreement and will only use this model for research or personal purposes. No commercial usage is allowed! <br>
 
-# 🚀Updates (0.2)
-✅ Added Use Half precision, (Float 16) checkbox for Low VRAM inference <br>
+# 🚀Updates (0.3)
+✅ Optimised Code for efficiency <br>
+
+✅ Simplified UI <br>
+
+✅ Updated UI elements to include Advanced Parametres dropdown <br>
+
+*( CFG Scale, Sigma_min, Sigma_max )* <br>
+
+✅ Added Use Half precision checkbox for Low VRAM inference <br>
+
+*( Float 16 )*
 
 ✅ Added choice for all Sampler types <br>
 
@@ -22,7 +34,7 @@
 
 ✅ Added link to the Repo <br>
 
-[06/06/2024]
+[08/06/2024]
 
 ---
 
