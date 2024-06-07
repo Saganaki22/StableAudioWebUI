@@ -107,7 +107,6 @@ def audio_generator(prompt, sampler_type, steps, cfg_scale, sigma_min, sigma_max
 # Create Gradio interface
 with gr.Blocks() as demo:
     gr.Markdown("<h1 style='text-align: center; font-size: 300%;'>💀🔊 StableAudioWebUI 💀🔊</h1>")
-    gr.Markdown("<p style='text-align: center;'><a href='https://github.com/Saganaki22/StableAudioWebUI'>Github Repository</a></p>")
 
     # Main input components
     prompt_textbox = gr.Textbox(lines=5, label="Prompt")
@@ -146,6 +145,9 @@ with gr.Blocks() as demo:
     submit_button.click(audio_generator,
                         inputs=[prompt_textbox, sampler_dropdown, steps_slider, cfg_scale_slider, sigma_min_slider, sigma_max_slider, generation_time_slider, seed_slider, model_half_checkbox],
                         outputs=[audio_output, output_textbox])
+
+    # GitHub link at the bottom
+    gr.Markdown("<p style='text-align: center;'><a href='https://github.com/Saganaki22/StableAudioWebUI'>Github Repository</a></p>")
 
 # Launch the Gradio demo
 demo.launch()
