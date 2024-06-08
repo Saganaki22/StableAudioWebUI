@@ -16,6 +16,15 @@
 
 ![image](assets/screenshot00.png)
 
+<br>
+
+### Example
+
+
+
+https://github.com/Saganaki22/StableAudioWebUI/assets/84208527/30063999-9ca6-4a86-8721-65e3cba4c87d
+
+
 ---
 
 # ⚠ Disclaimer ⚠
