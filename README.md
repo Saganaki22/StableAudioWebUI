@@ -184,7 +184,9 @@ https://github.com/Saganaki22/StableAudioWebUI/assets/84208527/1cb7ce3b-7463-46a
 
 ### [Huggingface](https://huggingface.co/stabilityai/stable-audio-open-1.0)   |   [Stable Audio Tools](https://github.com/Stability-AI/stable-audio-tools)   |   [Stability AI](https://stability.ai/news/introducing-stable-audio-open)
 
-</div>
-
 ---
 
+![drbaph](https://github.com/Saganaki22/StableAudioWebUI/assets/84208527/13432252-e640-4c98-a7ab-4d57e6b56059)
+
+
+</div>
