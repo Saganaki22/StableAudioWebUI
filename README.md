@@ -118,12 +118,16 @@ then save the file as run.bat
 
 (All with random seeds) <br>
 
+
 Prompt: a dog barking <br>
 CFG: 7 <br>
 Sigma_Min: 0.3 <br>
 Sigma_Max: 500 <br>
 
-![image](https://github.com/Saganaki22/StableAudioWebUI/blob/main/assets/screenshot1.png)
+
+![image](https://github.com/Saganaki22/StableAudioWebUI/blob/main/assets/screenshot1.png) <br>
+
+https://github.com/Saganaki22/StableAudioWebUI/assets/84208527/4ca9eb1b-2808-4f39-b7e3-f35c736eb7b7
 
 #
 <br>
@@ -132,7 +136,13 @@ CFG: 7 <br>
 Sigma_Min: 0.3 <br>
 Sigma_Max: 500 <br>
 
-![image](https://github.com/Saganaki22/StableAudioWebUI/blob/main/assets/screenshot2.png)
+![image](https://github.com/Saganaki22/StableAudioWebUI/blob/main/assets/screenshot2.png) <br>
+
+
+
+https://github.com/Saganaki22/StableAudioWebUI/assets/84208527/1f333384-d4e6-4167-abec-5167e2f4822f
+
+
 
 #
 <br>
@@ -141,7 +151,13 @@ CFG: 7 <br>
 Sigma_Min: 0.3 <br>
 Sigma_Max: 500 <br>
 
-![image](https://github.com/Saganaki22/StableAudioWebUI/blob/main/assets/screenshot3.png)
+![image](https://github.com/Saganaki22/StableAudioWebUI/blob/main/assets/screenshot3.png) <br>
+
+
+
+https://github.com/Saganaki22/StableAudioWebUI/assets/84208527/1cb7ce3b-7463-46a8-ba9a-3a5aa232d43a
+
+
 
 ---
 
