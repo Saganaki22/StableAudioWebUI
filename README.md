@@ -2,6 +2,8 @@
 
 # 💀🔊 StableAudioWebUI 💀🔊
 
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Space-red)]([https://huggingface.co/spaces/InstantX/InstantStyle](https://huggingface.co/spaces/ameerazam08/stableaudio-open-1.0))
+
 ### A Lightweight Gradio Web interface for running Stable Audio Open 1.0
 
 
