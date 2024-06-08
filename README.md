@@ -16,10 +16,13 @@
 
 ![image](assets/screenshot00.png)
 
-# ⚠ Disclaimer
+---
 
-## I am not responsible for any content generated using this repository. By using this repository, you acknowledge that you are bound by the [Stability AI license agreement](https://huggingface.co/stabilityai/stable-audio-open-1.0/blob/main/LICENSE) and will only use this model for research or personal purposes. No commercial usage is allowed! <br>
+# ⚠ Disclaimer ⚠
 
+### I am not responsible for any content generated using this repository. By using this repository, you acknowledge that you are bound by the [Stability AI license agreement](https://huggingface.co/stabilityai/stable-audio-open-1.0/blob/main/LICENSE) and will only use this model for research or personal purposes. No commercial usage is allowed! <br>
+
+---
  
 ### Recommended Settings
 Prompt: Any <br>
@@ -34,7 +37,6 @@ Seed: Any <br>
 ### > using the following schema 'your_prompt.mp3' <br>
 
 </div>
-
 
 # 🚀Updates (0.3)
 ✅ Added [One-Click-Installer.bat](https://github.com/Saganaki22/StableAudioWebUI/releases/tag/latest) for Windows NVIDIA / CPU Builds
