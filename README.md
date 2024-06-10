@@ -49,12 +49,27 @@ Seed: Any <br>
 
 </div>
 
-# 🚀Updates (0.3)
+# 🚀Updates (0.4)
+
+✅ **Implemented Enhanced Filename Handling and Security Measures** <br>
+   - **Filename Length Control**: Truncated long prompts to a maximum of 50 characters for filenames, preventing excessively long filenames. <br>
+   - **Enhanced Sanitization**: Applied strict rules to replace non-alphanumeric characters with underscores (`_`), ensuring valid and safe filenames. <br>
+   - **Unique Filename Generation**: Introduced a system to append numeric suffixes to filenames to avoid overwriting existing files, ensuring each file is uniquely named. <br>
+   - **Safe Directory Handling**: Utilized secure methods for path creation and directory handling to avoid risks from user input influencing file paths. <br>
+
+**[10/06/2024]**
+
+#
+
 ✅ Added [One-Click-Installer.bat](https://github.com/Saganaki22/StableAudioWebUI/releases/tag/latest) for Windows NVIDIA / CPU Builds
 
 ✅ Optimised Code for efficiency <br>
 
 ✅ Simplified UI <br>
+
+**[08/06/2024]**
+
+#
 
 ✅ Updated UI elements to include Advanced Parametres dropdown <br>
 
@@ -70,7 +85,7 @@ Seed: Any <br>
 
 ✅ Added link to the Repo <br>
 
-[08/06/2024]
+**[06/06/2024]**
 
 ---
  ### 📝 Note: For Windows builds with [Nvidia](https://github.com/Saganaki22/StableAudioWebUI/releases/download/latest/One-Click-Installer-GPU.bat) 30xx + or Float32 Capable [CPU](https://github.com/Saganaki22/StableAudioWebUI/releases/download/latest/One-Click-Installer-CPU.bat) you can use the [One-Click-Installer.bat](https://github.com/Saganaki22/StableAudioWebUI/releases/tag/latest) to simplify the process, granted you have logged in to huggingface-cli and auth'd your token prior to running the batch script: Step 3 (the huggingface-cli is used for obtaining the model file)
