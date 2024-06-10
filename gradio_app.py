@@ -66,7 +66,12 @@ def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_ti
     save_path = os.path.join(output_folder, date_folder)
     os.makedirs(save_path, exist_ok=True)
 
-    # Generate a filename based on the prompt
+    # Set a maximum filename length (e.g., 50 characters)
+    max_length = 50
+    if len(prompt) > max_length:
+        prompt = prompt[:max_length] + "_truncated"
+
+    # Sanitize the prompt to create a safe filename
     filename = re.sub(r'\W+', '_', prompt) + ".mp3"
     full_path = os.path.join(save_path, filename)
 
