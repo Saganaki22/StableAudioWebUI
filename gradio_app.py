@@ -9,6 +9,10 @@ import os
 from datetime import datetime
 import gradio as gr
 
+# Define a function to toggle the visibility of the seed slider
+def toggle_seed_slider(x):
+    seed_slider.visible = not x
+
 # Define a function to set up the model and device
 def setup_model(model_half):
     model, model_config = get_pretrained_model("audo/stable-audio-open-1.0")
@@ -88,7 +92,7 @@ def generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_ti
 
     return full_path
 
-def audio_generator(prompt, sampler_type, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, model_half):
+def audio_generator(prompt, sampler_type, steps, cfg_scale, sigma_min, sigma_max, generation_time, random_seed, seed, model_half):
     try:
         print("Generating audio with parameters:")
         print("Prompt:", prompt)
@@ -98,11 +102,15 @@ def audio_generator(prompt, sampler_type, steps, cfg_scale, sigma_min, sigma_max
         print("Sigma Min:", sigma_min)
         print("Sigma Max:", sigma_max)
         print("Generation Time:", generation_time)
+        print("Random Seed:", "Random" if random_seed else "Fixed")
         print("Seed:", seed)
         print("Model Half Precision:", model_half)
         
         # Set up the model and device
         model, model_config, device = setup_model(model_half)
+        
+        if random_seed:
+            seed = torch.randint(0, 1000000, (1,)).item()
         
         filename = generate_audio(prompt, steps, cfg_scale, sigma_min, sigma_max, generation_time, seed, sampler_type, model_half, model, model_config, device)
         return gr.Audio(filename), f"Generated: {filename}"
@@ -130,6 +138,7 @@ with gr.Blocks() as demo:
     )
     steps_slider = gr.Slider(minimum=0, maximum=200, label="Steps", step=1, value=100)
     generation_time_slider = gr.Slider(minimum=0, maximum=47, label="Generation Time (seconds)", step=1, value=47)
+    random_seed_checkbox = gr.Checkbox(label="Random Seed")
     seed_slider = gr.Slider(minimum=-1, maximum=999999, label="Seed", step=1, value=123456)
 
     # Advanced parameters accordion
@@ -147,8 +156,9 @@ with gr.Blocks() as demo:
     output_textbox = gr.Textbox(label="Output")
 
     # Link the button and the function
+    random_seed_checkbox.change(fn=toggle_seed_slider, inputs=[random_seed_checkbox], outputs=[seed_slider])
     submit_button.click(audio_generator,
-                        inputs=[prompt_textbox, sampler_dropdown, steps_slider, cfg_scale_slider, sigma_min_slider, sigma_max_slider, generation_time_slider, seed_slider, model_half_checkbox],
+                        inputs=[prompt_textbox, sampler_dropdown, steps_slider, cfg_scale_slider,sigma_min_slider, sigma_max_slider, generation_time_slider, random_seed_checkbox, seed_slider, model_half_checkbox],
                         outputs=[audio_output, output_textbox])
 
     # GitHub link at the bottom
