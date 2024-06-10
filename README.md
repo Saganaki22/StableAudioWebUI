@@ -5,18 +5,21 @@
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Space-red)](https://huggingface.co/spaces/ameerazam08/stableaudio-open-1.0)
 
 ### A Lightweight Gradio Web interface for running Stable Audio Open 1.0
+By [**@drbaph**](https://instagram.com/drbaph)
 
 
 
 <br>
 <br>
 
-![image](assets/screenshot000.png)
+![image_2024-06-10_21-03-05](https://github.com/Saganaki22/StableAudioWebUI/assets/84208527/b3f4bd5a-04ec-4802-aabc-dcaea4882f51)
+
 
 <br>
 <br>
 
-![image](assets/screenshot00.png)
+![image_2024-06-10_21-02-10](https://github.com/Saganaki22/StableAudioWebUI/assets/84208527/526d72f3-abf2-499c-af18-654025a305ba)
+
 
 <br>
 
@@ -52,6 +55,10 @@ Seed: Any <br>
 # 🚀Updates (0.4)
 
 **[10/06/2024]** <br>
+
+<br>
+
+✅ Added (`Random_Seed`) Checkbox 
 
 <br>
 
